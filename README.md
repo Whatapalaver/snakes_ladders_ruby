@@ -30,10 +30,11 @@ So that I can gloat to everyone around
 ---
 
 _How did you approach the problem?_
-- blah blah
+- I started by considering the functionality that is required for implementing Feature 1 (initializing game on position 1, dice roll method, move method, move restriction and win declaration)
+- First code written was the test for the starting position
 
 _How did you make key design decisions and what alternatives did you consider?_
-- blah blah
+- I spent some time trying to decide whether I needed a Game class or whether to keep the functionality within a single Player class (or similar) given that we only had to implement Feature 1 without the complexity of two players.
 
 _How do you envision your solution evolving in the future?_
 - blah blah

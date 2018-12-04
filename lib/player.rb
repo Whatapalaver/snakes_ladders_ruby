@@ -9,8 +9,12 @@ class Player
     @position = STARTING_SQUARE
   end
 
-  def move(number)
-    @position += number
+  def move
+    @position += roll()
+  end
+
+  def roll
+    return Kernel.rand(1..6)
   end
 
 end

@@ -10,15 +10,30 @@ describe Player do
   end
 
   describe '#move' do
-    it 'a move of 3 spaces changes the players position by 3' do
-      expect { player.move(3) }.to change { player.position }.by(3)
-      expect(player.position).to eq 4
-    end
+    context 'randomness stubbed' do
+      it 'a move of 3 spaces changes the players position by 3' do
+        allow(player).to receive(:roll) { 3 }
+        expect { player.move }.to change { player.position }.by(3)
+        expect(player.position).to eq 4
+      end
 
-    it 'cumulatively adds to the player position' do
-      player.move(3)
-      player.move(4)
-      expect(player.position).to eq 8
+      it 'moves cumulatively adds to the player position' do
+        allow(player).to receive(:roll) { 3 }
+        player.move
+        allow(player).to receive(:roll) { 4 }
+        player.move
+        expect(player.position).to eq 8
+      end
+    end
+  end
+
+  describe '#roll' do
+    context 'randomness included' do
+      it 'returns an integer value between 1 and 6' do
+        expect(player.roll).to be_kind_of(Numeric)
+        expect(player.roll).to be >= 1
+        expect(player.roll).to be <= 6
+      end
     end
   end
 end

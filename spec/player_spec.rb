@@ -49,4 +49,8 @@ describe Player do
     end
   end
 
+  describe '#play' do
+    
+  end
+
 end

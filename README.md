@@ -42,6 +42,8 @@ I spent some time trying to decide whether I needed a Game class or whether to k
 
 Strangely, I haven't actually built a CLI before. I've always tested in IRB only. Creating a runtime program required an actual play method which might have been better handled by a Game class.
 
+I have struggled to test my CLI required play method as the test triggers runtime. I have left this unresolved....
+
 ### _How do you envision your solution evolving in the future?_
 
 There are a number of additional features involved in the original kata. During refactoring I tried to keep my methods very small and defined so that the overall program would be tolerant of change.
@@ -58,7 +60,7 @@ To Use
 - Clone or fork this project `git clone https://github.com/Whatapalaver/snakes_ladders_ruby.git`
 - Change into the directory `cd snakes_ladders_ruby`
 - Install dependencies `bundle install`
-- You can start the Command Line Interface (CLI) with `ruby './bin/main'`
+- You can start the Command Line Interface (CLI) with `ruby bin/main`
 
 To test
 ---

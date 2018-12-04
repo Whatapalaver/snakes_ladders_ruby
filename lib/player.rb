@@ -1,7 +1,7 @@
 class Player
 
   STARTING_SQUARE = 1
-  FINAL_SQUARE = 20
+  FINAL_SQUARE = 100
 
   attr_accessor :position, :in_play
 
@@ -11,16 +11,10 @@ class Player
   end
 
   def play(name)
-    while @position != FINAL_SQUARE && in_play == true
+    while @position != FINAL_SQUARE && @in_play == true
       puts "#{name}, you are on square #{@position}, press any key to roll, or 9 to exit"
       response = gets.chomp
-      puts response
-      if response != 'q'
-        move()
-      else 
-        puts "Sorry to have bored you, goodbye!"
-        exit
-      end
+      response != 'q' ? move() : exit_program
     end
   end
 
@@ -53,6 +47,11 @@ class Player
 
   def declare_overshoot(roll)
     puts "You've overshot the last square with a roll of #{roll}, try again!\n"
+  end
+
+  def exit_program
+    puts "Sorry to have bored you, goodbye!"
+    exit
   end
 
 end

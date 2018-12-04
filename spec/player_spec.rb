@@ -8,4 +8,10 @@ describe Player do
       expect(player.position).to eq 1
     end
   end
+
+  describe '#move' do
+    it 'a move of 3 spaces changes the players position by 3' do
+      expect { player.move(3) }.to change { player.position }.by(3)
+    end
+  end
 end

@@ -14,10 +14,12 @@ class Player
     while @position != FINAL_SQUARE && in_play == true
       puts "#{name}, you are on square #{@position}, press any key to roll, or 9 to exit"
       response = gets.chomp
-      if response != '9'
+      puts response
+      if response != 'q'
         move()
       else 
-        "Sorry to have bored you, goodbye!"
+        puts "Sorry to have bored you, goodbye!"
+        exit
       end
     end
   end

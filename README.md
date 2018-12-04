@@ -40,6 +40,8 @@ So that I can gloat to everyone around
 
 I spent some time trying to decide whether I needed a Game class or whether to keep the functionality within a single Player class (or similar) given that we only had to implement Feature 1 without the complexity of two players.
 
+Strangely, I haven't actually built a CLI before. I've always tested in IRB only. Creating a runtime program required an actual play method which might have been better handled by a Game class.
+
 ### _How do you envision your solution evolving in the future?_
 
 There are a number of additional features involved in the original kata. During refactoring I tried to keep my methods very small and defined so that the overall program would be tolerant of change.

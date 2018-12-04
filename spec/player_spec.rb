@@ -26,13 +26,13 @@ describe Player do
       end
 
       it 'is allowed and declares GAME OVER when the FINAL_SQUARE is achieved' do
-        player.position = 95
+        player.position = Player::FINAL_SQUARE - 5
         allow(player).to receive(:dice_roll) { 5 }
-        expect { player.move }.to output("You have won! Your position has been reset.\n").to_stdout
+        expect { player.move }.to output("You have won!\n").to_stdout
       end
 
       it 'is not allowed if it exceeds the FINAL_SQUARE' do
-        player.position = 95
+        player.position = Player::FINAL_SQUARE - 5
         allow(player).to receive(:dice_roll) { 6 }
         expect { player.move }.to output("You've overshot the last square with a roll of 6, try again!\n").to_stdout
       end

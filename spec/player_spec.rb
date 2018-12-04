@@ -9,8 +9,8 @@ describe Player do
     end
   end
 
-  describe '#move' do
-    context 'randomness stubbed' do
+  context 'randomness stubbed' do
+    describe '#move' do
       it 'a move of 3 spaces changes the players position by 3' do
         allow(player).to receive(:roll) { 3 }
         expect { player.move }.to change { player.position }.by(3)
@@ -24,16 +24,29 @@ describe Player do
         player.move
         expect(player.position).to eq 8
       end
+
+      it 'is allowed and declares GAME OVER when the FINAL_SQUARE is achieved' do
+        player.position = 95
+        allow(player).to receive(:roll) { 5 }
+        expect { player.move }.to output("You have won! Your position has been reset.\n").to_stdout
+      end
+
+      it 'is not allowed if it exceeds the FINAL_SQUARE' do
+        player.position = 95
+        allow(player).to receive(:roll) { 6 }
+        expect { player.move }.to output("You've overshot the last square with a roll of 6, try again!\n").to_stdout
+      end
+
     end
   end
 
-  describe '#roll' do
-    context 'randomness included' do
+  context 'randomness included' do
+    describe '#roll' do
       it 'returns an integer value between 1 and 6' do
         expect(player.roll).to be_kind_of(Numeric)
-        expect(player.roll).to be >= 1
-        expect(player.roll).to be <= 6
+        expect(player.roll).to be_between(1, 6).inclusive
       end
     end
   end
+
 end

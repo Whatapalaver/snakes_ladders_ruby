@@ -29,6 +29,7 @@ describe Player do
         player.position = Player::FINAL_SQUARE - 5
         allow(player).to receive(:dice_roll) { 5 }
         expect { player.move }.to output("You have won!\n").to_stdout
+        expect(player.in_play).to eq false
       end
 
       it 'is not allowed if it exceeds the FINAL_SQUARE' do

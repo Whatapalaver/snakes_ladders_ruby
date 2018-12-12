@@ -11,20 +11,20 @@ class Player
   end
 
   def play(name)
-    while @position != FINAL_SQUARE && @in_play == true
-      puts "#{name}, you are on square #{@position}, press any key to roll, or 9 to exit"
-      response = gets.chomp
+    while @in_play
+      puts "#{name}, you are on square #{@position}, press any key to roll, or 'q' to exit"
+      response = gets.chomp.downcase
       response != 'q' ? move() : exit_program
     end
   end
 
   def move
     roll = dice_roll()
-    valid_move(roll) ? @position += roll : exception_move(roll)
-  end
-
-  def exception_move(roll)
-    win(roll) ? declare_winner & @in_play = false : declare_overshoot(roll)
+    if win(roll)
+      declare_winner
+    else
+      valid_move(roll) ? @position += roll : declare_overshoot(roll)
+    end
   end
 
   def dice_roll

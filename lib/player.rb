@@ -42,6 +42,7 @@ class Player
   end
 
   def declare_winner
+    @in_play = false
     puts 'You have won!'
   end
 
